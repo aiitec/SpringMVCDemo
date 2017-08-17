@@ -42,44 +42,61 @@ demo是Spring最新的4.2.6版本。做了如下操作：
 Controller，对应@Controller注解，只做路由转发+耦合view层的东西（输出html或者json）
 
 #### view层
-html或者json等数据格式，HTML使用JSP模板，json格式通过对象方式，然后在controller里面一行代码转换成json，根据对象命名，例如用户信息为UserInfo
+html或者json等数据格式，HTML使用JSP模板。
+JSP放在webapp/WEB-INF/pages底下，注意按照目录方式存放。
+json格式通过对象方式，然后在controller里面一行代码转换成json，根据对象命名，例如用户信息为UserInfo．
+如果无特别的json或者数据结构，直接输出了来自model返回的对象转换成的json，则无需在view层上面放json有关的东西。
+
 
 ### model层
 业务逻辑和模型，M层再进一步分层ABCR：
-A层：Application，简写App，对应@Service注解，包含有参数检查，权限控制，事务控制，业务流程入口。
-B层：Business，简写biz，对应@Service注解，包含业务逻辑处理的主要代码、流程描述
-C层（为了避免误会，以后都称为Component层、组件层）：Component，没有简写，对应@Component注解，包含逻辑的小零件，方便业务层组合逻辑。如果有对外的API调用等等也使用这个注解并且在此归类
+
+A层：Application应用层，简写App，对应@Service注解，包含有参数检查，权限控制，事务控制，业务流程入口。
+
+B层：Business业务曾，简写biz，对应@Service注解，包含业务逻辑处理的主要代码、流程描述
+
+C层（为了避免误会，以后都称为Component层、组件层）：Component零件层，没有简写，对应@Component注解，包含逻辑的小零件，方便业务层组合逻辑。
+如果有对外的API调用等等也使用这个注解并且在此归类。
+为什么叫零件不叫组件纯粹是为了让这些代码尽可能小，复用性高，规避网砂锅内滥用“组件”概念导致意思混淆
+
 R层：Repository，没有简写，SQL操作对应@Repository注解，包含数据库操作，Dao，model对象等。数据对象对应@Entity注解，
-公用工具包，不通过Spring管理的，以其他方式管理，目录结构在业务的包下独立存在，例如com.aiitec.user，标准的结构参考例子如下：
+
+comm包：英文communication，Application层的数据打包给controller时，主要通过里面的类的实例传递数据包装在公用类里面完成。
+
+entity包：Hibernate框架所需要，表的实体对象。类名均以Entity结尾。
+
+不通过Spring管理的，以其他方式管理，目录结构在业务的包下独立存在，例如工具为com.aiitec.user.utils。
+
+标准的结构参考例子如下：
 ```
 ├─controller
 │      BlogController.java
 │      MainController.java
 │
 ├─model
-│  ├─app
+│  ├─app  ->应用层
 │  │      LoginApp.java
 │  │
-│  ├─biz
+│  ├─biz  ->业务曾
 │  │      LoginBiz.java
 │  │
-│  ├─comm
-│  │      UserMap.java
-│  │      UserReqBody.java
-│  │      UserRespBody.java
-│  │
-│  ├─component
+│  ├─component ->零件层
 │  │      PasswordComponent.java
 │  │      UserInfoComponent.java
 │  │
-│  ├─entity
+│  ├─entity ->实体对象
 │  │      BlogEntity.java
 │  │      UserEntity.java
 │  │
-│  └─repository
-│          BlogRepository.java
-│          UserRepository.java
-└─view
+│  ├─repository ->R层
+│  │      BlogRepository.java
+│  │      UserRepository.java
+│  └─comm  ->通讯实体层
+│          UserMap.java
+│          UserReqBody.java
+│          UserRespBody.java
+├─utils ->工具类
+└─view ->view层可选
     └─object
             UserInfo.java
 ```
