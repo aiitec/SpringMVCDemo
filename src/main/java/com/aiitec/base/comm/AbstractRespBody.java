@@ -1,5 +1,12 @@
 package com.aiitec.base.comm;
 
+import com.aiitec.base.annotation.NoConfound;
+import com.google.gson.annotations.SerializedName;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+@NoConfound
 public abstract class AbstractRespBody {
     /**
      * 状态码
@@ -12,6 +19,7 @@ public abstract class AbstractRespBody {
     /**
      * 系统时间
      */
-    public long t = System.currentTimeMillis();
+    @SerializedName("t")
+    public String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS").format(new Date());
 
 }
