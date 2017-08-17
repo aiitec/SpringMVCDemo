@@ -26,17 +26,25 @@
 
 ## 本项目介绍
 demo是Spring最新的4.2.6版本。做了如下操作：
+
 1.增加Simple-spring-memcached作为缓存
+
 2.目录分层做到了MVC分层，M层进一步分层，符合企业级的架构
+
 3.包名换成公司规范要求
 
-###1.MVC框架里面，我们根据MVC以及下面的分层要求
+### 1.MVC框架里面，我们根据MVC以及下面的分层要求
+
 划分号目录，保持调用结构：
-####Controller层：
+
+#### Controller层：
+
 Controller，对应@Controller注解，只做路由转发+耦合view层的东西（输出html或者json）
-####view层
+
+#### view层
 html或者json等数据格式，HTML使用JSP模板，json格式通过对象方式，然后在controller里面一行代码转换成json，根据对象命名，例如用户信息为UserInfo
-###model层
+
+### model层
 业务逻辑和模型，M层再进一步分层ABCR：
 A层：Application，简写App，对应@Service注解，包含有参数检查，权限控制，事务控制，业务流程入口。
 B层：Business，简写biz，对应@Service注解，包含业务逻辑处理的主要代码、流程描述
