@@ -1,6 +1,6 @@
 package com.aiitec.demo.model.comm;
 
-import com.aiitec.base.comm.AbstractRespBody;
+import com.aiitec.base.model.comm.AbstractRespBody;
 
 import java.util.List;
 

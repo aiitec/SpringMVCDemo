@@ -1,7 +1,7 @@
 package com.aiitec.demo.model.comm;
 
-import com.aiitec.base.comm.AbstractTableReqBody;
-import com.aiitec.base.comm.Table;
+import com.aiitec.base.model.comm.AbstractTableReqBody;
+import com.aiitec.base.model.comm.Table;
 
 public class UserReqBody extends AbstractTableReqBody<UserReqBody.UserWhere> {
 

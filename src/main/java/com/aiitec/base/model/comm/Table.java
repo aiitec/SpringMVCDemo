@@ -1,4 +1,4 @@
-package com.aiitec.base.comm;
+package com.aiitec.base.model.comm;
 
 /**
  * Where条件

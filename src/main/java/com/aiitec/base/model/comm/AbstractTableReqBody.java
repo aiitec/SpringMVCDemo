@@ -1,6 +1,4 @@
-package com.aiitec.base.comm;
-
-import com.aiitec.demo.model.comm.UserRespBody;
+package com.aiitec.base.model.comm;
 
 
 public abstract class AbstractTableReqBody<WHERE> {

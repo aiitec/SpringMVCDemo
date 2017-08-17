@@ -91,6 +91,7 @@ public class UserEntity implements Serializable{
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         return result;
+
     }
 
     @OneToMany(mappedBy = "userByUserId")

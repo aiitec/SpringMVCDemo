@@ -1,4 +1,4 @@
-package com.aiitec.base.comm;
+package com.aiitec.base.model.comm;
 
 import com.aiitec.base.annotation.NoConfound;
 import com.google.gson.annotations.SerializedName;

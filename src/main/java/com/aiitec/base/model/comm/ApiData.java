@@ -1,4 +1,4 @@
-package com.aiitec.base.comm;
+package com.aiitec.base.model.comm;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,6 +1,7 @@
 package com.aiitec.demo.controller;
 
-import com.aiitec.base.comm.ApiData;
+import com.aiitec.base.model.comm.ApiData;
+import com.aiitec.demo.model.app.LoginApp;
 import com.aiitec.demo.model.comm.UserRespBody;
 import com.aiitec.demo.model.component.UserInfoComponent;
 import com.aiitec.demo.model.entity.UserEntity;
@@ -38,7 +39,7 @@ public class MainController {
     public String getUsers(ModelMap modelMap) {
         // 查询user表中所有记录
 //        List<UserEntity> userList = userRepository.findAll();
-
+        loginApp.login();
         logger.warn("getUsers");
         // 将所有记录传递给要返回的jsp页面，放在userList当中
         modelMap.addAttribute("userList", userInfoComponent.getAllUsers(1));
@@ -47,6 +48,8 @@ public class MainController {
         return "admin/users";
     }
 
+    @Autowired
+    LoginApp loginApp;
     /**
      * 测试返回json格式内容。
      * @return
@@ -56,6 +59,7 @@ public class MainController {
     public String testJson(){
         Gson gson = new Gson();
         logger.warn("getUsers");
+        loginApp.login();
         // 将所有记录传递给要返回的jsp页面，放在userList当中
         List<UserEntity> list = userInfoComponent.getAllUsers(1);
         ArrayList<UserRespBody.User> result = new ArrayList<UserRespBody.User>();
