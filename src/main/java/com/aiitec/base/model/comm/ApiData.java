@@ -1,5 +1,6 @@
 package com.aiitec.base.model.comm;
 
+import com.aiitec.base.annotation.NoConfound;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -7,6 +8,7 @@ import org.slf4j.LoggerFactory;
  * 响应API头
  * @param <T>
  */
+@NoConfound
 public class ApiData<T>{
     private static Logger devLogger = LoggerFactory.getLogger("dev");
     public String s="";

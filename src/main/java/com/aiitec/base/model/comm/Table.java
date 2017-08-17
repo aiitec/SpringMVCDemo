@@ -1,9 +1,12 @@
 package com.aiitec.base.model.comm;
 
+import com.aiitec.base.annotation.NoConfound;
+
 /**
  * Where条件
  * @param <WHERE>
  */
+@NoConfound
 public class Table<WHERE>{
     public int pa =1;
     public int li=20;
